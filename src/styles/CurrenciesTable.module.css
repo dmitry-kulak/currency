@@ -1,0 +1,21 @@
+.currenciesTable {
+  border-collapse: collapse;
+  
+}
+
+.cell {
+  padding: 2px 20px;
+  text-align: center;
+}
+
+.row:hover {
+  background-color: rgba(171, 171, 171, 0.14);
+}
+
+.diffPositive {
+  color: green;
+}
+
+.diffNegative {
+  color: red;
+}

@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import styles from "./styles/App.module.css";
+import { CurrenciesTable } from "./components/CurrenciesTable/CurrenciesTable";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1>LOOKING FOR A JOB</h1>
       </header>
+
+      <main>
+        <CurrenciesTable />
+      </main>
+
+      <footer className={styles.footer}>
+        <h2>Использовал:</h2>
+        <ul>
+          <li>React</li>
+          <li>Typescript</li>
+          <li>Redux</li>
+          <li>Redux-thunk</li>
+          <li>Axios</li>
+          <li>CSS-modules</li>
+          <li>react-tooltip</li>
+        </ul>
+      </footer>
     </div>
   );
-}
+};
 
 export default App;
