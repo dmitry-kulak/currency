@@ -12,6 +12,10 @@
   background-color: rgba(171, 171, 171, 0.14);
 }
 
+.diffCell {
+  text-align: end;
+}
+
 .diffPositive {
   color: green;
 }
