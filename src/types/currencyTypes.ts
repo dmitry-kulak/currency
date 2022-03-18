@@ -1,3 +1,21 @@
+export type DailyCurrency = {
+  ID: string;
+  NumCode: string;
+  CharCode: string;
+  Nominal: number;
+  Name: string;
+  Value: number;
+  Previous: number;
+};
+
+export type DailyJson = {
+  Date: string;
+  PreviousDate: string;
+  PreviousURL: string;
+  Timestamp: string;
+  Valute: DailyCurrency[];
+};
+
 export type Currency = {
   name: string;
   code: string;
@@ -5,12 +23,16 @@ export type Currency = {
   previousValue: number;
 };
 
+export type History = DailyJson;
+
 export type CurrencyState = {
   currenciesList: Currency[];
+  history: History[];
 };
 
 export enum CurrencyActionTypes {
   FETCH_CURRENCIES = "FETCH_CURRENCIES",
+  FETCH_HISTORY = "FETCH_HISTORY",
 }
 
 export type FetchCurrencies = {
@@ -18,4 +40,9 @@ export type FetchCurrencies = {
   payload: Currency[];
 };
 
-export type CurrencyActions = FetchCurrencies;
+export type FetchHistory = {
+  type: CurrencyActionTypes.FETCH_HISTORY;
+  payload: History[];
+};
+
+export type CurrencyActions = FetchCurrencies | FetchHistory;

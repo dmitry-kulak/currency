@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   currenciesList: [],
+  history: [],
 };
 
 export const currencyReducer = (
@@ -14,7 +15,10 @@ export const currencyReducer = (
 ): CurrencyState => {
   switch (action.type) {
     case CurrencyActionTypes.FETCH_CURRENCIES:
-      return { currenciesList: action.payload };
+      return { ...state, currenciesList: action.payload };
+
+    case CurrencyActionTypes.FETCH_HISTORY:
+      return { ...state, history: action.payload };
 
     default:
       return state;

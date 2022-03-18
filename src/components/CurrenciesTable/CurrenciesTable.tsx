@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styles from "../../styles/CurrenciesTable.module.css";
 import { Currency, CurrencyState } from "../../types/currencyTypes";
-import { CurrencyRow } from "./sub-components/CurrencyRow";
+import { CurrencyRow } from "../CurrencyRow/CurrencyRow";
 import { fetchCurrencies } from "../../store/actions/currenciesActions";
 
 export const CurrenciesTable = () => {
@@ -36,16 +36,14 @@ export const CurrenciesTable = () => {
 
   return (
     <>
-      <table className={styles.currenciesTable}>
-        <thead className={styles.head}>
-          <tr>
-            <th className={styles.cell}>Код</th>
-            <th className={styles.cell}>Цена</th>
-            <th className={styles.cell}>Изменение</th>
-          </tr>
-        </thead>
-        <tbody>{renderCurrencies(currenciesList)}</tbody>
-      </table>
+      <div className={styles.table}>
+        <div className={styles.row}>
+          <span className={styles.cell}>Код</span>
+          <span className={styles.cell}>Цена ₽</span>
+          <span className={styles.cell}>Изменение</span>
+        </div>
+        {renderCurrencies(currenciesList)}
+      </div>
 
       <ReactTooltip />
     </>

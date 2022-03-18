@@ -1,6 +1,4 @@
-.currenciesTable {
-  border-collapse: collapse;
-  
+.table {
 }
 
 .cell {
@@ -8,7 +6,16 @@
   text-align: center;
 }
 
-.row:hover {
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.row:not(:first-of-type) {
+  cursor: pointer;
+}
+
+.row:not(:first-of-type):hover {
   background-color: rgba(171, 171, 171, 0.14);
 }
 
