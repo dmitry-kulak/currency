@@ -60,7 +60,7 @@ export function fetchHistory(previousUrl: string) {
 
     return dispatch({
       type: CurrencyActionTypes.FETCH_HISTORY,
-      payload: history,
+      payload: history.reverse(),
     });
   };
 }
