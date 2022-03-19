@@ -3,9 +3,10 @@ import ReactTooltip from "react-tooltip";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "../../styles/CurrenciesTable.module.css";
-import { Currency, CurrencyState } from "../../types/currencyTypes";
+import { Currency } from "../../types/currencyTypes";
 import { CurrencyRow } from "../CurrencyRow/CurrencyRow";
-import { fetchCurrencies } from "../../store/actions/currenciesActions";
+import { CurrencyState } from "../../store/reducers/currencyReducer";
+import { LoadCurrencies } from "../../store/actions/currencyActions";
 
 export const CurrenciesTable = () => {
   const currenciesList = useSelector<CurrencyState, Currency[]>(
@@ -27,7 +28,7 @@ export const CurrenciesTable = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchCurrencies());
+    dispatch({ ...new LoadCurrencies() });
   }, [dispatch]);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export const CurrenciesTable = () => {
       <div className={styles.table}>
         <div className={styles.row}>
           <span className={styles.cell}>Код</span>
-          <span className={styles.cell}>Цена ₽</span>
+          <span className={styles.cell}>Цена, ₽</span>
           <span className={styles.cell}>Изменение</span>
         </div>
         {renderCurrencies(currenciesList)}

@@ -1,10 +1,17 @@
-import {
-  CurrencyActionTypes,
-  CurrencyActions,
-  CurrencyState,
-} from "../../types/currencyTypes";
+import { Currency, DailyJson } from "../../types/currencyTypes";
 
-const initialState = {
+import {
+  CurrencyActions,
+  LoadCurrenciesSuccess,
+  LoadHistorySuccess,
+} from "../actions/currencyActions";
+
+export type CurrencyState = {
+  currenciesList: Currency[];
+  history: DailyJson[];
+};
+
+const initialState: CurrencyState = {
   currenciesList: [],
   history: [],
 };
@@ -14,11 +21,11 @@ export const currencyReducer = (
   action: CurrencyActions
 ): CurrencyState => {
   switch (action.type) {
-    case CurrencyActionTypes.FETCH_CURRENCIES:
-      return { ...state, currenciesList: action.payload };
+    case LoadCurrenciesSuccess.Name:
+      return { ...state, currenciesList: action.currencies };
 
-    case CurrencyActionTypes.FETCH_HISTORY:
-      return { ...state, history: action.payload };
+    case LoadHistorySuccess.Name:
+      return { ...state, history: action.history };
 
     default:
       return state;

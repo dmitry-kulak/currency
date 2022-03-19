@@ -2,8 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import styles from "../../styles/ModalHistory.module.css";
-import { History, CurrencyState } from "../../types/currencyTypes";
 import { getDiff } from "../../utils/getDiff";
+import { CurrencyState } from "../../store/reducers/currencyReducer";
+import { DailyJson } from "../../types/currencyTypes";
 
 type ModalHistoryProps = {
   code: string;
@@ -11,11 +12,11 @@ type ModalHistoryProps = {
 };
 
 export const ModalHistory = ({ code, closeModal }: ModalHistoryProps) => {
-  const history = useSelector<CurrencyState, History[]>(
+  const history = useSelector<CurrencyState, DailyJson[]>(
     (state) => state.history
   );
 
-  const currentHistory = (code: string, history: History[]) => {
+  const currentHistory = (code: string, history: DailyJson[]) => {
     const formatDate = (date: string) => {
       const addPad = (date: number) => {
         return date.toString().padStart(2, "0");
@@ -81,7 +82,7 @@ export const ModalHistory = ({ code, closeModal }: ModalHistoryProps) => {
         <div className={styles.table}>
           <header className={styles.header}>
             <span className={styles.cell}>Дата</span>
-            <span className={styles.cell}>Цена ₽</span>
+            <span className={styles.cell}>Цена, ₽</span>
             <span className={styles.cell}>Изменение</span>
           </header>
           {renderRows()}

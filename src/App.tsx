@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1>LOOKING FOR A JOB</h1>
+        <h1>DESIGN IS MY PASSION</h1>
       </header>
 
       <main>

@@ -22,27 +22,3 @@ export type Currency = {
   value: number;
   previousValue: number;
 };
-
-export type History = DailyJson;
-
-export type CurrencyState = {
-  currenciesList: Currency[];
-  history: History[];
-};
-
-export enum CurrencyActionTypes {
-  FETCH_CURRENCIES = "FETCH_CURRENCIES",
-  FETCH_HISTORY = "FETCH_HISTORY",
-}
-
-export type FetchCurrencies = {
-  type: CurrencyActionTypes.FETCH_CURRENCIES;
-  payload: Currency[];
-};
-
-export type FetchHistory = {
-  type: CurrencyActionTypes.FETCH_HISTORY;
-  payload: History[];
-};
-
-export type CurrencyActions = FetchCurrencies | FetchHistory;
