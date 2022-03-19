@@ -20,7 +20,7 @@ const App = () => {
           <li>React</li>
           <li>Typescript</li>
           <li>Redux</li>
-          <li>Redux-thunk</li>
+          <li>Redux-saga</li>
           <li>Axios</li>
           <li>CSS-modules</li>
           <li>react-tooltip</li>

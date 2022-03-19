@@ -7,7 +7,7 @@
 * React
 * Typescript
 * Redux
-* Redux-thunk
+* Redux-saga
 * Axios
 * CSS-modules
 * react-tooltip
