@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Dispatch } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
@@ -6,11 +5,11 @@ import {
   CurrencyActionTypes,
   CurrencyState,
   DailyCurrency,
-  DailyJson,
   FetchCurrencies,
   FetchHistory,
   History,
 } from "../../types/currencyTypes";
+import { getDaily } from "../../api/currency.api";
 
 const mapCurrency = (currency: DailyCurrency) => ({
   name: currency.Name,
@@ -23,9 +22,7 @@ export function fetchCurrencies() {
   return async (
     dispatch: ThunkDispatch<CurrencyState, void, FetchCurrencies | FetchHistory>
   ) => {
-    const response = await axios.get<DailyJson>(
-      "https://www.cbr-xml-daily.ru/daily_json.js"
-    );
+    const response = await getDaily("daily_json.js");
 
     const newCurrenciesList = Object.values(response.data.Valute)
       .map(mapCurrency)
@@ -48,10 +45,10 @@ export function fetchHistory(previousUrl: string) {
 
     while (history.length < 10) {
       if (history.length === 0) {
-        const response = await axios.get<DailyJson>(previousUrl);
+        const response = await getDaily(previousUrl);
         history.push(response.data);
       } else {
-        const response = await axios.get<DailyJson>(
+        const response = await getDaily(
           history[history.length - 1].PreviousURL
         );
         history.push(response.data);
