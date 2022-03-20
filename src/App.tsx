@@ -13,19 +13,6 @@ const App = () => {
       <main>
         <CurrenciesTable />
       </main>
-
-      <footer className={styles.footer}>
-        <h2>Использовал:</h2>
-        <ul>
-          <li>React</li>
-          <li>Typescript</li>
-          <li>Redux</li>
-          <li>Redux-saga</li>
-          <li>Axios</li>
-          <li>CSS-modules</li>
-          <li>react-tooltip</li>
-        </ul>
-      </footer>
     </div>
   );
 };
